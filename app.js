@@ -9,34 +9,63 @@ Sei pronto/a? :)
 `);
 
 // FUNZIONE PER GENERARE I NUMERI RANDOM
-function randomNumbers(min, max) {
+function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // ARRAY CHE CONTERRÀ I NUMERI RANDOM
-const arrayNumber = [];
+const randomNumbersArray = [];
 
 do {
-    const numbers = randomNumbers(1, 99);
+    const numbers = getRandomNumber(1, 99);
 
-    if(arrayNumber.includes(numbers) === false) {
-        arrayNumber.push(numbers);
+    if(randomNumbersArray.includes(numbers) === false) {
+        randomNumbersArray.push(numbers);
     }
-} while (arrayNumber.length < 5);
+} while (randomNumbersArray.length < 5);
 
-console.log(arrayNumber);
+console.log(randomNumbersArray);
 
-// FUNZIONE CHE MOSTRA I NUMERI GENERATI CON 1S DI DELAY
-setTimeout(tuoiNumeri, 1000);
-
-function tuoiNumeri() {
+// ALERT CHE MOSTRA I NUMERI ESTRATTI
 alert(`
 Questi sono i tuoi numeri:
 
-${arrayNumber}
+${randomNumbersArray.join(" - ")}
     
 Tienili a mente per 30 secondi!
 `);
+
+// ARRAY CHE CONTERRÀ I NUMERI DEl GIOCATORE
+const numeriUtente = [];
+
+// ARRAY CHE CONTERRÀ I NUMERI INDOVINATI
+const numeriIndovinati = [];
+
+// FUNZIONE PER CREARE IL TIME-OUT
+setTimeout(funzioneTimeOut, 3000);
+
+function funzioneTimeOut() {
+
+    do {
+
+        // VARIABILE PER CHIEDE I NUMERI CHE L'UTENTE RICORDA
+        const chiediNumeri = parseInt(prompt('Inserisci i numeri.'));
+
+        numeriUtente.push(chiediNumeri);
+
+        if (randomNumbersArray.includes(chiediNumeri) && !numeriIndovinati.includes(chiediNumeri)) {
+            numeriIndovinati.push(chiediNumeri);
+        }
+
+    } while (numeriUtente.length < randomNumbersArray.length);
+
+    console.log(numeriIndovinati);
+
+    alert(`
+    Hai indovinato ${numeriIndovinati.length} numeri su ${randomNumbersArray.length}!
+
+    I numeri che hai indovinato sono: ${numeriIndovinati.join(" - ")}.
+    `);
 }
