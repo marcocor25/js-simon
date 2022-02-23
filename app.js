@@ -28,10 +28,10 @@ for (let i = 0; i < 5; i++) {
     arrayNumber.push(numeriRandom);
 }
 
-// FUNZIONE CHE MOSTRA I NUMERI GENERATI CON 1,5 DI DELAY
-setTimeout(yourNumber, 1500);
+// FUNZIONE CHE MOSTRA I NUMERI GENERATI CON 1S DI DELAY
+setTimeout(tuoiNumeri, 1000);
 
-function yourNumber() {
+function tuoiNumeri() {
 alert(`Questi sono i tuoi numeri:
 
 ${arrayNumber}
@@ -39,3 +39,12 @@ ${arrayNumber}
 Tienili a mente per 30 secondi!
 `);
 }
+
+// FUNZIONE CHE CHIEDE I NUMERI GENERATI DOPO 30S
+setTimeout(chiediNumeri, 30000);
+
+function chiediNumeri() {
+    prompt('Quali erano i 5 numeri?')
+}
+
+console.log(chiediNumeri);
