@@ -20,10 +20,23 @@ const arrayNumber = [];
 
 do {
     const numbers = randomNumbers(1, 99);
-    
+
     if(arrayNumber.includes(numbers) === false) {
         arrayNumber.push(numbers);
     }
 } while (arrayNumber.length < 5);
 
 console.log(arrayNumber);
+
+// FUNZIONE CHE MOSTRA I NUMERI GENERATI CON 1S DI DELAY
+setTimeout(tuoiNumeri, 1000);
+
+function tuoiNumeri() {
+alert(`
+Questi sono i tuoi numeri:
+
+${arrayNumber}
+    
+Tienili a mente per 30 secondi!
+`);
+}
