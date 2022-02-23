@@ -8,43 +8,22 @@ Alla fine ti dirò se li hai indovinati tutti oppure no.
 Sei pronto/a? :)
 `);
 
+// FUNZIONE PER GENERARE I NUMERI RANDOM
+function randomNumbers(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // ARRAY CHE CONTERRÀ I NUMERI RANDOM
 const arrayNumber = [];
-console.log(arrayNumber);
 
-for (let i = 0; i < 5; i++) {
-
-    // FUNZIONE PER GENERARE I NUMERI RANDOM
-    function randomNumber(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min);
+do {
+    const numbers = randomNumbers(1, 99);
+    
+    if(arrayNumber.includes(numbers) === false) {
+        arrayNumber.push(numbers);
     }
+} while (arrayNumber.length < 5);
 
-    // VARIABILE PER I NUMERI RANDOM
-    const numeriRandom = randomNumber(1, 99);
-    console.log(numeriRandom);
-
-    arrayNumber.push(numeriRandom);
-}
-
-// FUNZIONE CHE MOSTRA I NUMERI GENERATI CON 1S DI DELAY
-setTimeout(tuoiNumeri, 1000);
-
-function tuoiNumeri() {
-alert(`Questi sono i tuoi numeri:
-
-${arrayNumber}
-
-Tienili a mente per 30 secondi!
-`);
-}
-
-// FUNZIONE CHE CHIEDE I NUMERI GENERATI DOPO 30S
-setTimeout(chiediNumeri, 30000);
-
-function chiediNumeri() {
-    prompt('Quali erano i 5 numeri?')
-}
-
-console.log(chiediNumeri);
+console.log(arrayNumber);
